@@ -8,20 +8,20 @@
 Replace anything surrounded by the `< >` symbols._
 
 ## SUMMARY:
- < Provide a short description of your program's functionality. No more than a couple sentences. >
+ Simple game where there is a turtle protagonist that is controlled by arrow keys and three enemies who move randomly by increments of 1. Protagonist has a kill zone of southeast. 
 #### Unique Feature
- < Describe the unique feature you added >
+ I added a sound that played https://www.youtube.com/watch?v=3w-2gUSus34 the oof meme sound upon killing an enemy. Ok just kidding its not working inside replit I will addd another one with my remaining grace day
 
 ## GRACE DAYS
-Grace days used for this assignment: < # >
+Grace days used for this assignment: < 2 >
 
-Grace days remaining: < # >/5
+Grace days remaining: < 0 >/5
 
 ## KNOWN BUGS AND INCOMPLETE PARTS:
- < What parts of the project you were not able to complete >
+ none
 
 ## REFERENCES:
- < List any outside resources used >
+ (https://www.geeksforgeeks.org/python-playing-audio-file-in-pygame/)
 
 ## MISCELLANEOUS COMMENTS:
  < Anything you would like the grader to know >

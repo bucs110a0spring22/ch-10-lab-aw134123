@@ -26,6 +26,15 @@ class Controller:
         self.hero = hero.Hero("Conan", 50, 80, "assets/hero.png")
         self.all_sprites = pygame.sprite.Group((self.hero,) + tuple(self.enemies))
         self.state = "GAME"
+        '''initialize sound feature'''
+        pygame.mixer.init()
+        pygame.mixer.music.load("assets/oofcollision.mp3")
+        pygame.mixer.music.set_volume(1)
+        # clock = pygame.time.Clock()
+        # while pygame.mixer.music.get_busy():
+        #   clock.tick(60)
+        #   pygame.event.poll()
+        
 
     def mainLoop(self):
         while True:
@@ -41,6 +50,8 @@ class Controller:
                     sys.exit()
                 if event.type == pygame.KEYDOWN:
                     if(event.key == pygame.K_UP):
+                        pygame.mixer.music.play()
+                        print("fart")
                         self.hero.move_up()
                     elif(event.key == pygame.K_DOWN):
                         self.hero.move_down()
@@ -52,13 +63,18 @@ class Controller:
             # check for collisions
             fights = pygame.sprite.spritecollide(self.hero, self.enemies, True)
             if(fights):
-                for e in fights:
-                    if(self.hero.fight(e)):
-                        e.kill()
-                        self.background.fill((250, 250, 250))
-                    else:
-                        self.background.fill((250, 0, 0))
-                        self.enemies.add(e)
+              
+              for e in fights:
+                  if(self.hero.fight(e)):
+                      e.kill()
+                      self.background.fill((250, 250, 250))
+                      
+                      #print("fart")
+                  else:
+                      self.background.fill((250, 0, 0))
+                      self.enemies.add(e)
+                      #pygame.mixer.music.stop()
+                      #print("nope")
 
             # redraw the entire screen
             self.enemies.update()
@@ -69,7 +85,7 @@ class Controller:
 
             # update the screen
             pygame.display.flip()
-
+    
     def gameOver(self):
         self.hero.kill()
         myfont = pygame.font.SysFont(None, 30)
