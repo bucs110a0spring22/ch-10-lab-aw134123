@@ -27,9 +27,14 @@ class Controller:
         self.all_sprites = pygame.sprite.Group((self.hero,) + tuple(self.enemies))
         self.state = "GAME"
         '''initialize sound feature'''
+      
         pygame.mixer.init()
         pygame.mixer.music.load("assets/oofcollision.mp3")
         pygame.mixer.music.set_volume(1)
+        FPS_CLOCK = pygame.time.Clock() 
+        pygame.display.update()
+        FPS_CLOCK.tick(30)
+        #sets how many times per sec screen is updated
         # clock = pygame.time.Clock()
         # while pygame.mixer.music.get_busy():
         #   clock.tick(60)
@@ -48,7 +53,7 @@ class Controller:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
-                if event.type == pygame.KEYDOWN:
+                elif event.type == pygame.KEYDOWN:
                     if(event.key == pygame.K_UP):
                         pygame.mixer.music.play()
                         print("fart")
@@ -59,16 +64,19 @@ class Controller:
                         self.hero.move_left()
                     elif(event.key == pygame.K_RIGHT):
                         self.hero.move_right()
+                # left, middle, right = pygame.mouse.get_pressed()
+                # if left:
+                  
 
             # check for collisions
             fights = pygame.sprite.spritecollide(self.hero, self.enemies, True)
             if(fights):
-              
               for e in fights:
                   if(self.hero.fight(e)):
                       e.kill()
                       self.background.fill((250, 250, 250))
-                      
+                      '''adding sound effect to if kill statement'''
+                      pygame.mixer.play()
                       #print("fart")
                   else:
                       self.background.fill((250, 0, 0))
