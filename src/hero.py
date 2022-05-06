@@ -22,14 +22,15 @@ class Hero(pygame.sprite.Sprite):
         self.health = 3
 
     #methods to make moving our hero easier
-    def move_up(self):
+    '''def move_up(self):
         self.rect.y -= self.speed
     def move_down(self):
         self.rect.y += self.speed
     def move_left(self):
         self.rect.x -= self.speed
     def move_right(self):
-        self.rect.x += self.speed
+        self.rect.x += self.speed'''
+  
 
     def fight(self, opponent):
         if(random.randrange(3)):

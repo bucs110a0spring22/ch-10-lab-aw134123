@@ -53,19 +53,28 @@ class Controller:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
-                elif event.type == pygame.KEYDOWN:
-                    if(event.key == pygame.K_UP):
-                        pygame.mixer.music.play()
-                        print("fart")
-                        self.hero.move_up()
-                    elif(event.key == pygame.K_DOWN):
-                        self.hero.move_down()
-                    elif(event.key == pygame.K_LEFT):
-                        self.hero.move_left()
-                    elif(event.key == pygame.K_RIGHT):
-                        self.hero.move_right()
-                # left, middle, right = pygame.mouse.get_pressed()
-                # if left:
+                # if event.type == pygame.KEYDOWN:
+                #     if(event.key == pygame.K_UP):
+                #         pygame.mixer.music.play()
+                #         print("fart")
+                #         self.hero.move_up()
+                #     elif(event.key == pygame.K_DOWN):
+                #         self.hero.move_down()
+                #     elif(event.key == pygame.K_LEFT):
+                #         self.hero.move_left()
+                #     elif(event.key == pygame.K_RIGHT):
+                #         self.hero.move_right()
+                if event.type == pygame.MOUSEMOTION:
+                  print('mousemotion')
+                  mouse_presses = pygame.mouse.get_pressed()
+                  if mouse_presses[0]:
+                    print('mousedown')
+                    rel = pygame.mouse.get_rel()
+                    pos = pygame.mouse.get_pos()
+                    print(rel)
+                    print(pos)
+                    self.hero.rect.x += rel[0]
+                    self.hero.rect.y += rel[1]
                   
 
             # check for collisions
@@ -76,7 +85,7 @@ class Controller:
                       e.kill()
                       self.background.fill((250, 250, 250))
                       '''adding sound effect to if kill statement'''
-                      pygame.mixer.play()
+                      pygame.mixer.music.play()
                       #print("fart")
                   else:
                       self.background.fill((250, 0, 0))
